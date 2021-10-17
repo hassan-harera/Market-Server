@@ -1,13 +1,12 @@
-package com.harera.model.modelset
+package com.example.dp
 
-import com.harera.model.modelset.User.primaryKey
 import org.ktorm.entity.Entity
 import org.ktorm.schema.Table
 import org.ktorm.schema.long
 import org.ktorm.schema.varchar
 
 interface UserEntity : Entity<UserEntity> {
-    val uid : String
+    val uid : Int
 }
 
 object User : Table<UserEntity>("users") {

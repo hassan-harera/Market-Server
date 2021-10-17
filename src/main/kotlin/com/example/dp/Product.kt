@@ -1,14 +1,12 @@
 package com.example.dp
 
+import kotlinx.serialization.Serializable
 import org.ktorm.entity.Entity
-import org.ktorm.schema.Table
-import org.ktorm.schema.double
-import org.ktorm.schema.float
-import org.ktorm.schema.varchar
+import org.ktorm.schema.*
 
 interface ProductEntity : Entity<ProductEntity> {
-    val productId: String
-    val category : CategoryEntity
+    val productId: Int
+    val category: CategoryEntity
     val title: String
     val price: Double
     val amount: Double
@@ -16,7 +14,7 @@ interface ProductEntity : Entity<ProductEntity> {
 }
 
 object Product : Table<ProductEntity>("product") {
-    val productId = varchar("product_id").primaryKey()
+    val productId = int("product_id").primaryKey()
     val categoryName = varchar("category_name").references(Category) { it.category }
     val title = varchar("title")
     val price = double("price")
